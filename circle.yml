@@ -10,7 +10,7 @@ deployment:
   hub:
     branch: master
     commands:
-      - docker build -t $REPO.
+      - docker build -t $REPO .
       - docker tag $REPO $REPO:$CIRCLE_BUILD_NUM
       - docker login -u $USER -e $EMAIL -p $PASS
       - docker push $REPO
