@@ -1,0 +1,16 @@
+general:
+  artifacts:
+    - "target/hello-k8s.jar"
+machine:
+  java:
+    version: openjdk8
+  services:
+    - docker
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker build -t $REPO:$CIRCLE_BUILD_NUM .
+      - docker tag $REPO:$CIRCLE_BUILD_NUM $REPO:latest
+      - docker login -u $USER -e $EMAIL -p $PASS
+      - docker push $REPO:$CIRCLE_BUILD_NUM $REPO:latest
