@@ -13,4 +13,4 @@ deployment:
       - docker build -t $REPO:$CIRCLE_BUILD_NUM .
       - docker tag $REPO:$CIRCLE_BUILD_NUM $REPO:latest
       - docker login -u $USER -e $EMAIL -p $PASS
-      - docker push $REPO:$CIRCLE_BUILD_NUM $REPO:latest
+      - docker push $REPO:$CIRCLE_BUILD_NUM
